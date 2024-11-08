@@ -11,6 +11,31 @@
       body {
         overflow: hidden;
       }
+      .advertise-box {
+        position: fixed;
+        top: 80px; /* کمی فاصله بیشتر از هدر */
+        right: 20px;
+        width: 160px;
+        height: 160px;
+        background-color: #fef3c7; /* زرد کم‌رنگ */
+        color: #000;
+        text-align: center;
+        line-height: 1.5;
+        padding: 20px; /* فاصله بین متن و لبه‌ها */
+        border-radius: 16px; /* گوشه‌های گرد */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, background-color 0.3s ease; /* افکت ترنزیشن */
+      }
+
+      .advertise-box:hover {
+        background-color: #fde68a; /* رنگ متفاوت هنگام هاور */
+        transform: scale(1.05); /* افکت بزرگ‌شدن */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* افزایش سایه هنگام هاور */
+      }
     </style>
   </head>
   <body class="bg-white text-black">
@@ -28,7 +53,13 @@
       class="fixed bottom-5 right-5 bg-gray-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-500 transition duration-300"
       >Back</a
     >
-
+    <!-- Advertise Parcel Box -->
+    <div
+      onclick="window.location.href='CaryCompanionForm.html'"
+      class="advertise-box"
+    >
+      Advertise your need for a companion
+    </div>
     <!-- Search Box -->
     <section
       id="searchSection"
