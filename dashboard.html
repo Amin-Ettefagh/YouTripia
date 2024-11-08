@@ -10,6 +10,13 @@
       type="module"
     ></script>
     <style>
+      .card {
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
       /* Custom styles */
       .footer {
         background-color: #d1d1d1;
@@ -282,95 +289,82 @@ Experienced traveler with a love for exploring new destinations and sharing uniq
     </div>
 
     <div class="flex flex-wrap justify-center mt-10 gap-4">
-      <div class="card bg-white cursor-pointer" onclick="openWalletModal()">
-        <h3 class="text-xl font-bold">Your Wallet</h3>
+      <!-- Top Three Boxes -->
+      <div
+        class="card bg-black text-white cursor-pointer"
+        onclick="openWalletModal()"
+      >
+        <h3 class="text-xl font-bold">Wallet</h3>
         <p class="text-lg">0000-0000-000-000</p>
         <p id="walletAmountDisplay" class="text-2xl font-bold my-2">$500</p>
       </div>
       <div
-        class="card bg-red-300 cursor-pointer relative"
-        onclick="navigateTo('CarryCargoList.html')"
+        class="card bg-blue-300 text-black cursor-pointer"
+        onclick="navigateTo('activities.html')"
       >
-        <h3 class="text-xl font-bold">I have a parcel</h3>
-        <p class="text-sm absolute bottom-2 right-2">Parcel transport ad</p>
+        <h3 class="text-xl font-bold">Activities</h3>
       </div>
       <div
-        class="card bg-orange-300 cursor-pointer relative"
-        onclick="navigateTo('SendCargoList.html')"
+        class="card bg-yellow-300 text-black cursor-pointer"
+        onclick="navigateTo('market.html')"
       >
-        <h3 class="text-xl font-bold">I take your Parcel</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Parcel that needs shipping ad
-        </p>
-      </div>
-      <div
-        class="card bg-green-300 cursor-pointer relative"
-        onclick="navigateTo('CaryCompanionList.html')"
-      >
-        <h3 class="text-xl font-bold">I need a companion</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Passengers for companionship ad
-        </p>
-      </div>
-      <div
-        class="card bg-teal-300 cursor-pointer relative"
-        onclick="navigateTo('SendCompanionList.html')"
-      >
-        <h3 class="text-xl font-bold">I am a companion</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Drivers for companionship ad
-        </p>
-      </div>
-      <div
-        class="card bg-gray-300 text-black cursor-pointer"
-        onclick="navigateTo('control.html')"
-      >
-        <h3 class="text-xl font-bold">Application</h3>
-      </div>
-      <div
-        class="card bg-yellow-300 cursor-pointer relative"
-        onclick="navigateTo('CarryCargoForm.html')"
-      >
-        <h3 class="text-xl font-bold">Have a parcel Form</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Register an ad for Parcel transport
-        </p>
-      </div>
-      <div
-        class="card bg-lime-300 cursor-pointer relative"
-        onclick="navigateTo('SendCargoForm.html')"
-      >
-        <h3 class="text-xl font-bold">Take your parcel Form</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Register an ad for Parcel that needs shipping
-        </p>
-      </div>
-      <div
-        class="card bg-blue-300 cursor-pointer relative"
-        onclick="navigateTo('CaryCompanionForm.html')"
-      >
-        <h3 class="text-xl font-bold">Need a companion Form</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Register an ad for Passengers
-        </p>
-      </div>
-      <div
-        class="card bg-purple-300 cursor-pointer relative"
-        onclick="navigateTo('SendCompanionForm.html')"
-      >
-        <h3 class="text-xl font-bold">You are a companion Form</h3>
-        <p class="text-sm absolute bottom-2 right-2">
-          Register an ad for Drivers
-        </p>
-      </div>
-
-      <div
-        class="card bg-pink-300 text-black cursor-pointer"
-        onclick="navigateTo('request.html')"
-      >
-        <h3 class="text-xl font-bold">Request</h3>
+        <h3 class="text-xl font-bold">Market</h3>
       </div>
     </div>
+
+    <!-- Second Row - Initial Display with Parcels and Companionship Boxes -->
+    <div id="initialOptions" class="flex justify-center mt-10 gap-4">
+      <div
+        class="card bg-orange-300 cursor-pointer"
+        onclick="showParcelsOptions()"
+      >
+        <h3 class="text-xl font-bold">Parcels</h3>
+      </div>
+      <div
+        class="card bg-green-300 cursor-pointer"
+        onclick="showCompanionshipOptions()"
+      >
+        <h3 class="text-xl font-bold">Companionship</h3>
+      </div>
+    </div>
+
+    <!-- Second Row - Parcel Options (Initially Hidden) -->
+    <div id="parcelOptions" class="flex justify-center mt-10 gap-4 hidden">
+      <div
+        class="card bg-pink-300 cursor-pointer"
+        onclick="showParcelActions('parcel')"
+      >
+        <h3 class="text-xl font-bold">I have a parcel</h3>
+      </div>
+      <div
+        class="card bg-purple-300 cursor-pointer"
+        onclick="showParcelActions('courier')"
+      >
+        <h3 class="text-xl font-bold">I am a courier</h3>
+      </div>
+    </div>
+
+    <!-- Second Row - Companionship Options (Initially Hidden) -->
+    <div id="companionOptions" class="flex justify-center mt-10 gap-4 hidden">
+      <div
+        class="card bg-pink-300 cursor-pointer"
+        onclick="showCompanionActions('need')"
+      >
+        <h3 class="text-xl font-bold">I need a companion</h3>
+      </div>
+      <div
+        class="card bg-purple-300 cursor-pointer"
+        onclick="showCompanionActions('am')"
+      >
+        <h3 class="text-xl font-bold">I am a companion</h3>
+      </div>
+    </div>
+
+    <!-- Actions Display (Initially Hidden) -->
+    <div id="actionOptions" class="flex justify-center mt-10 gap-4 hidden">
+      <!-- Content dynamically inserted by JavaScript based on selections -->
+    </div>
+
     <!-- Wallet Modal -->
     <div id="walletModal" class="modal">
       <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
@@ -446,6 +440,81 @@ Experienced traveler with a love for exploring new destinations and sharing uniq
     </a>
 
     <script>
+      function resetView() {
+        // Reset to initial view
+        document.getElementById("initialOptions").classList.remove("hidden");
+        document.getElementById("parcelOptions").classList.add("hidden");
+        document.getElementById("companionOptions").classList.add("hidden");
+        document.getElementById("actionOptions").classList.add("hidden");
+        document.getElementById("actionOptions").innerHTML = ""; // Clear action buttons
+      }
+
+      function showParcelsOptions() {
+        document.getElementById("initialOptions").classList.add("hidden");
+        document.getElementById("parcelOptions").classList.remove("hidden");
+        document.getElementById("companionOptions").classList.add("hidden");
+      }
+
+      function showCompanionshipOptions() {
+        document.getElementById("initialOptions").classList.add("hidden");
+        document.getElementById("parcelOptions").classList.add("hidden");
+        document.getElementById("companionOptions").classList.remove("hidden");
+      }
+
+      function showParcelActions(option) {
+        document.getElementById("parcelOptions").classList.add("hidden");
+        document.getElementById("actionOptions").classList.remove("hidden");
+
+        if (option === "parcel") {
+          document.getElementById("actionOptions").innerHTML = `
+            <div class="card bg-red-300 cursor-pointer" onclick="navigateTo('CarryCargoList.html')">
+              <h3 class="text-xl font-bold">Find a courier who can take your parcel</h3>
+            </div>
+            <div class="card bg-orange-300 cursor-pointer" onclick="navigateTo('CarryCargoForm.html')">
+              <h3 class="text-xl font-bold">Advertise your parcel</h3>
+            </div>
+          `;
+        } else if (option === "courier") {
+          document.getElementById("actionOptions").innerHTML = `
+            <div class="card bg-red-300 cursor-pointer" onclick="navigateTo('SendCargoList.html')">
+              <h3 class="text-xl font-bold">Find a parcel</h3>
+            </div>
+            <div class="card bg-orange-300 cursor-pointer" onclick="navigateTo('SendCargoForm.html')">
+              <h3 class="text-xl font-bold">Advertise your vacant capacity to carry a parcel</h3>
+            </div>
+          `;
+        }
+      }
+
+      function showCompanionActions(option) {
+        document.getElementById("companionOptions").classList.add("hidden");
+        document.getElementById("actionOptions").classList.remove("hidden");
+
+        if (option === "need") {
+          document.getElementById("actionOptions").innerHTML = `
+            <div class="card bg-red-300 cursor-pointer" onclick="navigateTo('CaryCompanionList.html')">
+              <h3 class="text-xl font-bold">Find your trusted companion</h3>
+            </div>
+            <div class="card bg-orange-300 cursor-pointer" onclick="navigateTo('CaryCompanionForm.html')">
+              <h3 class="text-xl font-bold">Advertise your need for a companion</h3>
+            </div>
+          `;
+        } else if (option === "am") {
+          document.getElementById("actionOptions").innerHTML = `
+            <div class="card bg-red-300 cursor-pointer" onclick="navigateTo('SendCompanionList.html')">
+              <h3 class="text-xl font-bold">Find someone who needs a companion</h3>
+            </div>
+            <div class="card bg-orange-300 cursor-pointer" onclick="navigateTo('SendCompanionForm.html')">
+              <h3 class="text-xl font-bold">Advertise your interest to be a companion</h3>
+            </div>
+          `;
+        }
+      }
+
+      function navigateTo(url) {
+        window.location.href = url; // Change this to desired navigation behavior
+      }
+
       let currentWalletAmount = 500; // Initial wallet amount
 
       function openWalletModal() {
